@@ -1,4 +1,3 @@
-
 body{background-color: #000000}
 
 .resultado{
@@ -19,6 +18,11 @@ body{background-color: #000000}
     
 }
 
+.btnOp:hover{
+    background: #FFFFFF;
+    color:#DE9E36;  
+}
+
 .btnNum{
     background: #343a40;
     border: none;
@@ -33,6 +37,11 @@ body{background-color: #000000}
 
 }
 
+.btnNum:hover{
+    background: #707477;
+    color: white;
+}
+
 .btnNumLarge{
     background: #343a40;
     border: none;
@@ -43,8 +52,11 @@ body{background-color: #000000}
     height: 40px;
     width: 87px;
     margin: 2px;
-    
+}
 
+.btnNumLarge:hover{
+    background: #707477;
+    color: white;
 }
 
 .btnAc{
@@ -57,18 +69,33 @@ body{background-color: #000000}
     height: 40px;
     width: 40px;
     margin: 2px;
-   
 
+}
+
+.btnAc:hover{
+    background: #707477 !important;
+    color: #ffff;
 }
 
 .h1{
    color: whitesmoke; 
+   font-family: Arial, Helvetica, sans-serif ;
    font-family: 'Roboto', sans-serif;
-   font-size:40px;
 }
 
 .p{
     color: whitesmoke; 
     font-family: 'Roboto', sans-serif;
     font-size:25px;
+    text-align: center;
+    width: calc(100% - 148px);
  }
+
+ .responsive {
+    display: flex; /* or inline-flex */
+  }
+
+  .center{
+    display: inline-block;
+    text-align: center;
+  }
