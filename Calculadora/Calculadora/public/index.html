@@ -11,12 +11,14 @@
 
 
 
+
+
+
 <body>
     <div>
         <h1 class="h1">Calculadora</h1>
         <div>
-            <p id="resultado" class="p"> </p>
-
+            <p id="resultado" class="p">0</p>
 
         </div>
         <div>
@@ -44,8 +46,8 @@
         </div>
         <div>
             <input type="button" value="0" class="btnNumLarge" onclick="numero('0')">
-            <input type="button" value="." class="btnNum" onclick="numero('.')">
-            <input type="button" value="=" class="btnOp" onclick="resultado()">
+            <input type="button" value="," class="btnNum" onclick="numero(',')">
+            <input type="button" value="=" class="btnOp" onclick="resolver()">
             
         </div>
     </div>
