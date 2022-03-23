@@ -88,6 +88,7 @@ function numero(xx) {
         nx =-nx; 
         x=String(nx);  //hay que convertirlo en formato numero y despues de vuelta a String
         pantalla.innerHTML=x; 
+        xi = 1;
             
 
     }
