@@ -13,20 +13,20 @@ function numero(xx) {
     if (x=="0" || xi==1  ) {  //evalua que sea el primer numero en ingresarse
        pantalla.innerHTML=xx; //muestra el num
        x=xx; //iguala la variable
-       if (xx==",") { 
-          pantalla.innerHTML="0,"; //si solo pone la coma entonces escribe 0.
+       if (xx==".") { 
+          pantalla.innerHTML="0."; //si solo pone la coma entonces escribe 0.
           x=xx; //guarda el valor
           coma=1; //para recordar qur hay una coma puesta
           }
       }
       else {
-          if (xx=="," && coma==0) { //si escribimos una coma por primera vez entonces escribe el num normal
+          if (xx=="." && coma==0) { //si escribimos una coma por primera vez entonces escribe el num normal
               pantalla.innerHTML+=xx;
               x+=xx;
               coma=1; 
           }
          
-          else if (xx=="," && coma==1) {} //si vuelve a poner una coma no hace nada
+          else if (xx=="." && coma==1) {} //si vuelve a poner una coma no hace nada
           
           else {
               pantalla.innerHTML+=xx; //si ya estaba iniciado, escribir el numero, normal 
@@ -76,7 +76,7 @@ function numero(xx) {
 
 
     function porcentaje(){  
-        xx = x/100;  //diivde entre 100 el numero y luego resuelve la cuenta que tenia pendiente
+        xx = x/100;  //divide entre 100 el numero y luego resuelve la cuenta que tenia pendiente
         pantalla.innerHTML = xx;
         resolver();   //entonces si queremos el 50% de 8 deberiamos teclear: 8x50% (daria 4)
         xi = 1;

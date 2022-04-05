@@ -1,13 +1,23 @@
 body{
-    background-color: #000000
-    
+    background-color: #000000;
+    height: 100%;
+    width: 100%;
+
+}
+
+.calc{
+    background-color: #000000;
+    height: 100%;
+    width: 100%;
+    max-width: 1280px;
+    max-height: 1024px;
+    min-width: 300px;
+    min-height: 500px;   
+   
 }
 
 
-.resultado{
-    color: white;
-  
-}
+
 
 .btnOp{
     background: #DE9E36;
@@ -15,10 +25,10 @@ body{
     color: white;
     text-align: center;
     font-size: 16px;
-    border-radius: 50%;
-    height: 40px;
-    width: 40px;
-    margin: 2px;
+    border-radius: 60px;
+    height: 10%;
+    width: 10%;
+    margin: 1%;
     
 }
 
@@ -33,10 +43,10 @@ body{
     color: white;
     text-align: center;
     font-size: 16px;
-    border-radius: 50%;
-    height: 40px;
-    width: 40px;
-    margin: 2px;
+    border-radius: 60px;
+    height: 10%;
+    width: 10%;
+    margin: 1%;
     
 
 }
@@ -53,9 +63,9 @@ body{
     text-align: center;
     font-size: 16px;
     border-radius: 60px;
-    height: 40px;
-    width: 87px;
-    margin: 2px;
+    height: 10%;
+    width: 21%;
+    margin: 1%;
 }
 
 .btnNumLarge:hover{
@@ -70,9 +80,9 @@ body{
     text-align: center;
     font-size: 16px;
     border-radius: 60px;
-    height: 40px;
-    width: 40px;
-    margin: 2px;
+    height: 10%;
+    width: 10%;
+    margin: 1%;
 
 }
 
@@ -95,9 +105,6 @@ body{
     width: calc(100% - 148px);
  }
 
- .responsive {
-    display: flex; /* or inline-flex */
-  }
 
   .center{
     display: inline-block;
