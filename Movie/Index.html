@@ -6,6 +6,7 @@
     <link href="styles.css" rel="stylesheet">
     <link  href="favicon.png" rel="shortcut icon">
     <script src="logica.js"></script>
+    <script src="data.json"></script>
 </head>
 
 
@@ -13,48 +14,21 @@
 
 
 
-<body class="body">
+<body class="body" onload="load()">
     <div class="resizable">
-        <h1 class="h1">Calculadora</h2>
-        <div>
-            <p id="resultado" class="p">0</p>
-
-        </div>
-        <div>
-            <input type="button" value="AC" class="btnAc" onclick="borrarTodo()">
-            <input type="button" value="±" class="btnAc" onclick="opuesto()">
-            <input type="button" value="%" class="btnAc" onclick="porcentaje()">
-            <input type="button" value="/" class="btnOp" onclick="operar('/')">
-        </div>
-        <div>
-            <input type="button" value="7" class="btnNum" onclick="numero('7')">
-            <input type="button" value="8" class="btnNum" onclick="numero('8')">
-            <input type="button" value="9" class="btnNum" onclick="numero('9')">
-            <input type="button" value="x" class="btnOp" onclick="operar('x')">
-        </div>
-        <div>
-            <input type="button" value="4" class="btnNum" onclick="numero('4')">
-            <input type="button" value="5" class="btnNum" onclick="numero('5')">
-            <input type="button" value="6" class="btnNum" onclick="numero('6')">
-            <input type="button" value="-" class="btnOp" onclick="operar('-')">
-        </div>
-        <div>
-            <input type="button" value="1" class="btnNum" onclick="numero('1')">
-            <input type="button" value="2" class="btnNum" onclick="numero('2')">
-            <input type="button" value="3" class="btnNum" onclick="numero('3')">
-            <input type="button" value="+" class="btnOp" onclick="operar('+')">
-        </div>
-        <div>
-            <input type="button" value="0" class="btnNumLarge" onclick="numero('0')">
-            <input type="button" value="," class="btnNum" onclick="numero(',')">
-            <input type="button" value="=" class="btnOp" onclick="resolver()">
-            
-        </div>
+        <h1 class="h1">Peliculas</h2>
     </div>
-
-
-
-
+    <div>
+        <select type="button" onclick="showList()" value="Cines" class="btnAc">
+            <option value="Complejos" class="btnOp" onclick="showDepartments()"></option> <!-- Muestra una lista con los complejos-->
+        </select> 
+        <!-- 
+        <select type="button" onclick="showCategories()" value="Categorias" class="btnAc">
+            <option value="Categorias" class="btnOp" onclick="showCategories()"></option> // Muestra una lista con las categorias
+        </select>
+        --> 
+    </div>
+    <a href="nextPage.php">Buscar</a>
 </body>
 
 
