@@ -4,8 +4,7 @@ window.onload = function(){
 
 function load() {
 	var mydata = JSON.parse(data);
-	//alert(mydata[0].name);
-	//alert(mydata[0].age);
+	document.body.innerHTML = mydata;
 }
 
 function showList() {
@@ -16,12 +15,13 @@ function showList() {
 		"method": "GET"
 	  }
 	
-	$.ajax(settings).done(function (response) {
-		console.log(response);
-		console.log("Funciones: " + response.contentCinemaShows.cinema);
-		var complejos = response.contentCinemaShows.cinema;
+	$.ajax(settings).done(function (dataJson) {
+		console.log(dataJson);
+		console.log("Funciones: " + dataJson.contentCinemaShows.cinema);
+		var complejos = dataJson.contentCinemaShows.cinema;
 		$("#contentCinemaShowsCinema").append(complejos);
 		pantalla.innerHTML=content;
+		document.innerHTML(content);
 	  });
 
 }
