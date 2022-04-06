@@ -8,7 +8,6 @@ function load() {
 	//alert(mydata[0].age);
 }
 
-<<<<<<< HEAD
 function showList() {
 	var settings = {
 		"async": true,
@@ -20,22 +19,11 @@ function showList() {
 	$.ajax(settings).done(function (response) {
 		console.log(response);
 		console.log("Funciones: " + response.contentCinemaShows.cinema);
-		var content = response.contentCinemaShows.cinema;
-		$("#contentCinemaShowsCinema").append(content);
+		var complejos = response.contentCinemaShows.cinema;
+		$("#contentCinemaShowsCinema").append(complejos);
 		pantalla.innerHTML=content;
 	  });
 
-=======
-function showList() { //obtiene y muestra los complejos disponibles
-
-
-}
-
-
-function showDepartments() {
-
-    
->>>>>>> 580bfbbc0ed2d4cede9b91edf6ea39f6277aebf2
 }
 
 function showCategories() {
