@@ -24,8 +24,29 @@
     </div>
     <div>
         <label class="label">Seleccione un complejo:</label>
+
+        <script>
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://api.movie.com.uy/api/shows/rss/data",
+                "method": "GET"
+	        }
+	
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+                console.log("Funciones: " + response.contentCinemaShows.cinema);
+                var content = response.contentCinemaShows.cinema;
+                $("#contentCinemaShowsCinema").append(content);
+                pantalla.innerHTML=content;
+            });
+
+        </script>
+
+
+
         <select type="button" class="selectRosa" onclick="showList()" name="Cines" >
-            <option value="Complejos" onclick="showDepartments()"></option> <!-- Muestra una lista con los complejos-->
+            <option value="Complejos" onclick="showList()"></option> <!-- Muestra una lista con los complejos-->
         </select> 
        
     </div>
