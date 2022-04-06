@@ -4,10 +4,11 @@ function load() {
 	alert(mydata[0].age);
 }
 
-function showList() {
+function showList() { //obtiene y muestra los complejos disponibles
 
 
 }
+
 
 function showDepartments() {
 
