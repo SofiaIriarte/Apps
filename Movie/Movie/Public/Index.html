@@ -2,11 +2,14 @@
 <!DOCTYPE html class="center">
 
 <head>
-    <title>Calculadora</title>
+    <title>Peliculas</title>
     <link href="styles.css" rel="stylesheet">
-    <link  href="favicon.png" rel="shortcut icon">
+    <link  href="favicon.jpg" rel="shortcut icon">
     <script src="logica.js"></script>
     <script src="data.json"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 </head>
 
 
@@ -16,19 +19,16 @@
 
 <body class="body" onload="load()">
     <div class="resizable">
-        <h1 class="h1">Peliculas</h2>
+        <h1 class="h1">Cartelera</h2>
     </div>
     <div>
-        <select type="button" onclick="showList()" value="Cines" class="btnAc">
-            <option value="Complejos" class="btnOp" onclick="showDepartments()"></option> <!-- Muestra una lista con los complejos-->
+        <label class="label">Seleccione un complejo:</label>
+        <select type="button" class="selectRosa" onclick="showList()" name="Cines" >
+            <option value="Complejos" onclick="showDepartments()"></option> <!-- Muestra una lista con los complejos-->
         </select> 
-        <!-- 
-        <select type="button" onclick="showCategories()" value="Categorias" class="btnAc">
-            <option value="Categorias" class="btnOp" onclick="showCategories()"></option> // Muestra una lista con las categorias
-        </select>
-        --> 
+       
     </div>
-    <a href="nextPage.html">Buscar</a>
+    <a  type="button" href="nextPage.html" class="btnRosa">Buscar</a>
 </body>
 
 
