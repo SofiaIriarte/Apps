@@ -22,6 +22,26 @@
         <h1 class="h1">Cartelera</h2>
     </div>
     <div>
+        <script>
+            (function() {
+                var flickerAPI = "https://api.movie.com.uy/api/shows/rss/data";
+                $.getJSON( flickerAPI, {
+                    tags: "contentCinemaShows",
+                    tagmode: "any",
+                    format: "json"
+                })
+                    .done(function( data ) {
+                    $.each( data.items, function( i, item ) {
+                        $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
+                        if ( i === 3 ) {
+                        return false;
+                        }
+                    });
+                    });
+                })();
+        </script>
+        
+        
         <label class="label">Seleccione un complejo:</label>
 
         <select type="button" class="selectRosa" onclick="showList()" name="Cines" value="content">
