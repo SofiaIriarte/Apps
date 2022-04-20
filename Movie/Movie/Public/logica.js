@@ -1,15 +1,8 @@
 
-
-
-
-
-
 function showList() {
 	
 
 }
 
-function showCategories() {
 
-    
-}
+
