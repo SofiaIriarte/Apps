@@ -6,7 +6,20 @@
 </head>
 
 <body>
-    <div id="vue-app">
-        <p>{{message}}</p>
+    <p>{{message}}</p>
+    <div id="app-3">
+        <span v-if="seen">Aca Ta</span>
+        <span v-else="seen">No Ta</span>
+    </div>
+    <div v-show="visible">Siempre estoy</div>
+    <div id="app-4">
+        <ol>
+            <li v-for="perro in perros">
+                {{perro}}
+            </li>
+        </ol>
+        <input id="perroNuevo" type="text"></input>
+        <button @click="agregar">Agregar</button>
+        
     </div>
 </body>
