@@ -1,28 +1,72 @@
-function getData(){
-    $.getJSON('https://api.movie.com.uy/api/shows/rss/data', function(data){
-            var display = 
-                `User_ID: ${data.contentCinemaShows.movie}<br>
-                ID: ${data.contentCinemaShows.cinema}<br>
-                Title: ${data.contentCinemaShows.genre}`                
-            $(".display").html(display);
-            var items = [];
-            $.each( data, function( key, val ) {
-                items.push( "<li id='" + key + "'>" + val + "</li>" );
-            });
-            
-            $( "<ul/>", {
+
+
+function getData() {
+    $.getJSON('https://api.movie.com.uy/api/shows/rss/data', function (data) {
+        console.log("Exito");
+        var peliculas = [];
+        //var display =
+        data.contentCinemaShows.forEach(element => {
+            titulo: { [element].movie };
+            descripcion: { [element].description };
+            trailer: { [element].trailerURL };
+            imagen: { [element].posterURL };
+
+            // var strJson = JSON.stringify(element.movie);
+            // peliculas.push(strJson);
+
+            /* $("<ul/>", {
+                 "class": "my-new-list",
+                 html: peliculas.join("")
+             }).appendTo("body");*/
+
+            var strTitulo = JSON.stringify(element.movie);
+            var strDesc = JSON.stringify(element.description);
+            var strTrailer = JSON.stringify(element.trailerURL);
+            var strImagen = JSON.stringify(element.posterURL);
+
+            var peli = {
+                titulo: strTitulo,
+                descripcion: strDesc,
+                trailer: strTrailer,
+                imagen: strImagen
+            };
+
+
+            peliculas.push(peli);
+           
+          
+           
+        })
+
+        console.log(peliculas);
+        peliculas.forEach(peli =>{
+            $("<ul/>", {
                 "class": "my-new-list",
-                html: items.join( "" )
-            }).appendTo( "body" );
+                html: peli.titulo,
+            }).appendTo("body");})
+
     })
-    .done(function(data) {
-        console.log("Done");
-    })
-    .fail(function(jqXHR, textStatus, errorThrown) {
-        throw 'Error';
-    });        
+        .done(function (data) {
+            console.log("Done");
+        })
+        .fail(function (jqXHR, textStatus, errorThrown) {
+            throw 'Error';
+        });
 }
 
 
-     
+function crearTabla() {
+
+}
+
+
+
+
+function mostrarPelis() {
+    
+}
+
+
+
+
 
