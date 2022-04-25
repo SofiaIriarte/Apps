@@ -33,17 +33,13 @@ function getData() {
 
 
             peliculas.push(peli);
-           
+
           
            
         })
 
         console.log(peliculas);
-        peliculas.forEach(peli =>{
-            $("<ul/>", {
-                "class": "my-new-list",
-                html: peli.titulo,
-            }).appendTo("body");})
+        crearTabla(peliculas);
 
     })
         .done(function (data) {
@@ -55,16 +51,19 @@ function getData() {
 }
 
 
-function crearTabla() {
+function crearTabla(peliculas) {
+
+        peliculas.forEach(peli => {
+            $("<ul/>", {
+                "class": "my-new-list",
+                html: peli.titulo,
+            }).appendTo("body");
+        })
 
 }
+     
 
 
-
-
-function mostrarPelis() {
-    
-}
 
 
 
