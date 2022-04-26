@@ -1,25 +1,51 @@
 <!DOCTYPE html class="center">
 
 <head>
+    <title>Peliculas</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="favicon.jpg" rel="shortcut icon">
+    <script url="https://api.movie.com.uy/api/shows/rss/data"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <script href="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src= "https://code.jquery.com/jquery-3.5.1.js"> </script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="vue.js"></script>
 </head>
 
 <body>
-    <p>{{message}}</p>
-    <div id="app-3">
+    <!--<div id="app-3">
         <span v-if="seen">Aca Ta</span>
         <span v-else="seen">No Ta</span>
     </div>
-    <div v-show="visible">Siempre estoy</div>
-    <div id="app-4">
+    <div v-show="visible">Siempre estoy</div>-->
+    <div class="resizable" id="app">
+        <img src="clapperboard.png" width="40" height="40">
+        <h1 class="h1">Cartelera</h2>
+    </div>
+    <div>
+        <input type="button" value="Buscar" class="btnRosa" onclick="getData()"></input>
+    </div>
+    <!--<div id="app-4">
+        {{cinemas}}
+        <script>
+            for (let i = 0; i < htmlElements.length; i++) {
+  
+               // Print the current element
+               console.log(htmlElements[i]);
+            }
+
+        </script>
         <ol>
-            <li v-for="perro in perros">
-                {{perro}}
+            <li v-for="movies" in json>
+                {{movies}}
             </li>
         </ol>
         <input id="perroNuevo" type="text"></input>
         <button @click="agregar">Agregar</button>
         
-    </div>
+        
+    </div>-->
 </body>

@@ -1,0 +1,103 @@
+ let vm=new Vue({
+    /*http://localhost:8000?name=John&email=john@gmail.com,
+    parameters : this.$route.query,*/
+    el:'#app-4',
+    data:{
+        contentCinemaShows:[],
+        created: function() {
+            this.getJson();
+          },
+    },
+    methods: {
+        /*agregar: function () {
+          this.append(perroNuevo) 
+        }*/
+        getJson: function(){
+                $.getJSON('https://api.movie.com.uy/api/shows/rss/data',function(data){
+                  this.contentCinemaShows = data;
+                }.bind(this));
+            }
+      }
+})
+
+
+
+
+
+
+
+
+
+data: {
+        json: null //inicializo  o [], es lo mismo
+    },
+    created: function () {
+        $.getJSON('https://api.movie.com.uy/api/shows/rss/data', function (json) {
+
+//tengo la data
+
+		var info = [];
+		var display = 
+			json.contentCinemaShows.forEach(element => { //para cada elemento dentro de la data dentro del contentCinemaShows (contenido de cines, pelis, etc etc)
+				movie: {[elemento].movie};
+				var movie = JSON.stringify(element.movie); // paso de objeto a string
+				info.push(movie);  //agrego al vector el valor de movie??
+				$("<ul/>", {
+					html: info.join()  
+				}).appendTo("body");
+			}
+
+
+
+
+            this.json = json;
+        });
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+LISTA:
+<ol>
+            <li v-for="movies" in contentCinemaShows>
+                {{movies}}
+            </li>
+        </ol>
+        <input id="perroNuevo" type="text"></input>
+        <button @click="agregar">Agregar</button>
+        
