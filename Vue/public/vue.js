@@ -126,7 +126,23 @@
 
         }*/
 
+      },
+      /*EJEMPLO DE FUNCION
+      t(key){
+        console.log(key)
+        var local='fr';
+        return this.trans(key,local);
+      }*/
+      getCinemas(){
+        console.log("entro");
+            
+        $("<option/>", {
+            html: info.join()
+        }).appendTo("#cinemaSelect");
+
+        //return this.cartelera;
       }
+
     },
     created() {
         this.function();
@@ -186,7 +202,7 @@
                     info.push(element);  //agrego al vector el valor de movie??
                     $("<ul/>", {
                         html: info.join()
-                    });//.appendTo("body");
+                    }).appendTo("body");
                 });
     
     

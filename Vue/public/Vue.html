@@ -26,6 +26,26 @@
         <h1 class="h1">Cartelera</h2>
     </div>
     <div>
+
+
+        <!--<script>
+            $.each(items, function (i, item) {
+                $('#mySelect').append($('<option>', { 
+                    value: item.value,
+                    text : item.text 
+                }));
+            }); 
+
+        </script>-->
+
+
+
+
+        <select >
+            <option id="cinemaSelect" v-bind:placeholder="getCinemas()" required></option>
+
+
+        </select>>
         <input type="button" value="Buscar" class="btnRosa" onclick="getData()"></input>
     </div>
     <!--<div id="app-4">
