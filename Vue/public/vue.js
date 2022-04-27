@@ -163,15 +163,24 @@
         });//.appendTo("#cinemaSelect");
 
         //return this.cines;
+      },
+
+      onchange(event){
+        console(event.target);
       }
 
     },
-    onChange:function(event){
-        console.log(event.target);
-    },
+
+    //onChange: function(event) {
+    //    alert(event.target.value);
+
+    //onClick:function(event){
+    //    console.log(event.target);
+    //},
     created() {
         this.function();
-    },/*function () {
+    },
+    /*function () {
         var _this = this;
         $.getJSON('https://api.movie.com.uy/api/shows/rss/data', function (data) {
             //_this.json = data;
