@@ -21,17 +21,25 @@
         <span v-else="seen">No Ta</span>
     </div>
     <div v-show="visible">Siempre estoy</div>-->
-    <div class="resizable" id="app">
+
+    <ul id="app" class="demo">
+        <li v-for="value in cines">
+          {{ value }}
+        </li>
+    </ul>
+    
+    <div class="resizable">
         <img src="clapperboard.png" width="40" height="40">
         <h1 class="h1">Cartelera</h1>
-        <p>{{cines}}</p>
-        <select id="#cinemaSelect" v-model="cines" options="cines">
-            <p>hola</p>
-            <option v-for="cine in cines" :value="cine"
-              v-bind:key="cine">{{cine}}
+
+        <select id="app" v-model="cines">
+            <option disabled value="">Seleccione un complejo</option>
+            <option v-for="value in cines" v-bind:value="value">
+                {{ value }}
             </option>
 
         </select>
+        <span>Seleccionados: {{ selected }}</span>
     </div>
     <div>
 
