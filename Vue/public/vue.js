@@ -166,6 +166,9 @@
       }
 
     },
+    onChange:function(event){
+        console.log(event.target);
+    },
     created() {
         this.function();
     },/*function () {
