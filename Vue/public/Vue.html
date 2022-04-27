@@ -23,9 +23,10 @@
     <div v-show="visible">Siempre estoy</div>-->
     <div class="resizable" id="app">
         <img src="clapperboard.png" width="40" height="40">
-        <h1 class="h1">Cartelera</h2>
-            {{cines}}
+        <h1 class="h1">Cartelera</h1>
+        <p>{{cines}}</p>
         <select id="#cinemaSelect" v-model="cines" options="cines">
+            <p>hola</p>
             <option v-for="cine in cines" :value="cine"
               v-bind:key="cine">{{cine}}
             </option>

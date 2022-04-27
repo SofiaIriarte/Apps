@@ -34,6 +34,7 @@
                 var info = [];
                 var cines = [];
                 var peliculas = [];
+                var arrSinDuplicacionesM=[];
                 
                 var display = 
                     data.contentCinemaShows.forEach(element => { //para cada elemento dentro de la data dentro del contentCinemaShows (contenido de cines, pelis, etc etc)
@@ -83,7 +84,11 @@
                         contenido.push(this.trailerURL);
                         contenido.push(this.shows);
 
+                        //var strJSON = JSON.stringify(this.movie);
                         peliculas.push(this.movie);
+                        let setM = new Set(peliculas.map(JSON.stringify))
+                        arrSinDuplicacionesM = Array.from(setM).map(JSON.parse);
+                        //var strJSON = JSON.stringify(cine);
                         cines.push(cine);
                         //console.log(peliculas);
                         info.push(element);  //agrego al vector el valor de movie??
@@ -95,12 +100,15 @@
                         //console.log(this.cine);//console.log(this.cine);
                     });
         
-        
-        
+                
+                let set = new Set(cines.map(JSON.stringify))
+                let arrSinDuplicaciones = Array.from(set).map(JSON.parse);
+                //let setM = new Set(this.peliculas.map(JSON.stringify))
+                //let arrSinDuplicacionesM = Array.from(set).map(JSON.parse);
         
                 _this.cartelera = info;
-                _this.cines=cines;
-                _this.peliculas.push(this.peliculas);
+                _this.cines=arrSinDuplicaciones;
+                _this.peliculas.push(this.arrSinDuplicacionesM);
     
     
     
@@ -145,9 +153,9 @@
       getCinemas(){
         console.log("entro");
             
-        $("<option/>", {
+        $("<ul/>", {
             html: cines.join()
-        }).appendTo("#cinemaSelect");
+        });//.appendTo("#cinemaSelect");
 
         //return this.cines;
       }
