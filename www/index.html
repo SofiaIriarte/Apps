@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>MobileUI Demo</title>
+    <title>Cinema</title>
     <meta name="viewport" content="minimal-ui, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -22,6 +22,21 @@
     
 	<script src="mobileui/mui.min.js" type="text/javascript"></script>
     <script src="custom/custom.js" type="text/javascript"></script>
+
+
+
+	<!--NOSOTROS-->
+	<link href="favicon.jpg" rel="shortcut icon"> 
+	<link href="styles.css" rel="stylesheet">
+    <script url="https://api.movie.com.uy/api/shows/rss/data"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <script href="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src= "https://code.jquery.com/jquery-3.5.1.js"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 </head>
 <body>
 	<!-- Main wrapper. Importantly, think carefully before you change it or remove it. Do not recommend it. -->
@@ -42,17 +57,20 @@
 					<div class="mui-page-body mui-scrollable" id="home-body">
 						<div> <!-- important for scroll! -->
 							<div class="subtitle-band">Welcome to MobileUI</div>
-							<ul id='demos' class='mui-list mui-list-disclosure'>
-								<li><a href="#" id='gocontent'>Content sample</a></li>
-								<li><a href="#" id='golist'>List sample</a></li>
-								<li><a href="#" id='gotrans'>Page transitions</a></li>
-								<li><a href="#" id='gomodal'>Modal panel</a></li>
-								<li><a href="#" id='gotest'>API simple examples</a></li>
-							</ul>
+								
+								<ul id='demos' class='mui-list mui-list-disclosure'>
+									<li><a href="#" id='gocontent'>Complejos</a></li>
+									<li><a href="#" id='golist'>Peliculas</a></li>
+									<li><a href="#" id='gotrans'>Busqueda</a></li>
+									<li><a href="#" id='gomodal'>Precios</a></li>
+								</ul>
+									
+							</div>
 						</div>
 					</div>
 				</div>
-				
+
+
 				<div id='content-page' class="mui-page">
 					<div class="mui-page-header">
 						<a class="mui-backarrow" href="#"></a>
@@ -61,161 +79,19 @@
 					</div>
 					<div class="mui-page-body mui-scrollable" id="second-body">
 						<div class='mui-page-body-content'>
-							<h1 class='mui-content-title'>MobileUI</h1>
-							<h2 class='mui-content-description'>
-								Development of native App, multiplatform, in a simple way, using HTML, CSS and JavaScript
-							</h2>
-							<div class='mui-content-body'>
-								MobileUI es un framework libre, open source, ultraliviano, optimizado para Phonegap y especialmente para Phonegap Build, que permite desarrollar en forma rápida y sencilla App Profesionales para iOS, Android y Windows Phone, con interfaz de usuario auto-escala adaptable a los diversos tamaños, usando tecnologías conocidas como HTML, CSS y JavaScript.
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<div id='list-page' class="mui-page">
-					<div class="mui-page-header">
-						<a class="mui-backarrow" href="#"></a>
-						<div class='mui-page-title'>List Sample</div>
-						<a class="mui-headmenu" href="#"></a>
-					</div>
-					<div class="mui-page-body mui-scrollable" id="second-body">
-						<div>
-							<ul id='samplelist' class='mui-list'>
-								<li><a href="#">Element 1</a></li>
-								<li><a href="#">Element 2</a></li>
-								<li><a href="#">Element 3</a></li>
-								<li><a href="#">Element 4</a></li>
-								<li><a href="#">Element 5</a></li>
-								<li><a href="#">Element 6</a></li>
-								<li><a href="#">Element 7</a></li>
-								<li><a href="#">Element 8</a></li>
-								<li><a href="#">Element 9</a></li>
-								<li><a href="#">Element 10</a></li>
-								<li><a href="#">Element 11</a></li>
-								<li><a href="#">Element 12</a></li>
-								<li><a href="#">Element 13</a></li>
-								<li><a href="#">Element 14</a></li>
-								<li><a href="#">Element 15</a></li>
-								<li><a href="#">Element 16</a></li>
-								<li><a href="#">Element 17</a></li>
-								<li><a href="#">Element 18</a></li>
-								<li><a href="#">Element 19</a></li>
-								<li><a href="#">Element 20</a></li>
-								<li><a href="#">Element 21</a></li>
-								<li><a href="#">Element 22</a></li>
-								<li><a href="#">Element 23</a></li>
-								<li><a href="#">Element 24</a></li>
-								<li><a href="#">Element 25</a></li>
-								<li><a href="#">Element 26</a></li>
-								<li><a href="#">Element 27</a></li>
-								<li><a href="#">Element 28</a></li>
-								<li><a href="#">Element 29</a></li>
-								<li><a href="#">Element 30</a></li>
-								<li><a href="#">Element 31</a></li>
+							
+							<ul id="app" class='mui-list'>
+								<li v-for="value in cines">
+								{{ value }}
+								</li>
 							</ul>
+
 						</div>
 					</div>
 				</div>
 				
-				<div id='transitions-page' class="mui-page">
-					<div class="mui-page-header">
-						<a class="mui-backarrow" href="#"></a>
-						<div class='mui-page-title'>Page Transitions</div>
-						<a class="mui-headmenu" href="#"></a>
-					</div>
-					<div class="mui-page-body mui-scrollable" id="second-body">
-						<div>
-							<ul class='mui-list mui-list-disclosure'>
-								<li><a href="javascript:mui.viewport.showPage('test-page','DEF');">DEF (default for platform)</a></li>
-								<li><a href="javascript:mui.viewport.showPage('test-page','SLIDE_LEFT');">SLIDE_LEFT</a></li>
-								<li><a href="javascript:mui.viewport.showPage('test-page','SLIDE_RIGHT');">SLIDE_RIGHT</a></li>
-								<li><a href="javascript:mui.viewport.showPage('test-page','SLIDE_UP');">SLIDE_UP</a></li>
-								<li><a href="javascript:mui.viewport.showPage('test-page','SLIDE_DOWN');">SLIDE_DOWN</a></li>
-								<li><a href="javascript:mui.viewport.showPage('test-page','FADE');">FADE</a></li>
-								<li><a href="javascript:mui.viewport.showPage('test-page','OVERFLY_IN');">OVERFLY_IN</a></li>
-								<li><a href="javascript:mui.viewport.showPage('test-page','OVERFLY_OUT');">OVERFLY_OUT</a></li>
-								<li><a href="javascript:mui.viewport.showPage('test-page','FLOAT_IN');">FLOAT_IN</a></li>
-								<li><a href="javascript:mui.viewport.showPage('test-page','FLOAT_OUT');">FLOAT_OUT</a></li>
-								<li><a href="javascript:mui.viewport.showPage('test-page','NONE');">NONE</a></li>
-								
-							</ul>
-						</div>
-					</div>
-				</div>
-				
-				<div id='api-page' class="mui-page">
-					<div class="mui-page-header">
-						<a class="mui-backarrow" href="#"></a>
-						<div class='mui-page-title'>Test Page</div>
-						<a class="mui-headmenu" href="#"></a>
-					</div>
-					<div class="mui-page-body mui-scrollable" id="second-body">
-						<div class="subtitle-band">API quick examples</div>
-						<div class='mui-page-body-content'>
-							<ul>
-								<li><a class="my-button" href="#" id="api-cordova">mui.cordovaAvailable()</a></li>
-								<li><a class="my-button" href="#" id="api-ismobile">mui.isMobileDevice</a></li>
-								<li><a class="my-button" href="#" id='api-vibrate'>mui.vibrate()</a></li>
-								<li><a class="my-button" href="#" id='api-busy'>mui.busy()</a></li>
-								<li><a class="my-button" href="#" id='api-connection'>mui.getConnectionType()</a></li>
-								<li><a class="my-button" href="#" id='api-alert'>mui.alert()</a></li>
-								<li><a class="my-button" href="#" id='api-toast'>mui.toast()</a></li>
-								<li><a class="my-button" href="#" id='api-confirm'>mui.confirm()</a></li>
-								<li><a class="my-button" href="#" id='api-prompt'>mui.prompt()</a></li>
-								<li><a class="my-button" href="#" id='api-version'>MUI Version</a></li>
-								<li><a class="my-button" href="#" id="api-platform">What platform?</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				
-				<div id='test-page' class="mui-page">
-					<div class="mui-page-header">
-						<a class="mui-backarrow" href="#"></a>
-						<div class='mui-page-title'>Test Page</div>
-						<a class="mui-headmenu" href="#"></a>
-					</div>
-					<div class="mui-page-body mui-scrollable" id="second-body">
-						<div class='mui-page-body-content'>
-							<h1>Just a Test Page</h1>
-							<p>Press back button or back arrown</p>
-						</div>
-					</div>
-				</div>
-				
-			</div>	
-			
-			<!-- Toolbar out of mui-viewport to be omnipresent. -->
-			<!-- Barra de herramientas fuera de mui-viewport para ser omnipresente.-->
-	        <div class="mui-tabbar" id="footer">
-		        	<ul class="mui-tabbar-list">
-		        		<li class="mui-tabbar-button"><a href="#" id="tabbar-button1" >Home</a></li>
-		    			<li class="mui-tabbar-button"><a href="#" id="tabbar-button2" >WebSite</a></li>
-		    			<li class="mui-tabbar-button"><a href='#' id="tabbar-button3" >MobileUI</a></li>
-		    			<li class="mui-tabbar-button"><a href="#" id="tabbar-button4" >Facebook</a></li>
-		    			<li class="mui-tabbar-button"><a href="#" id="tabbar-button5" >Support</a></li>
-		        	</ul>
-	        </div>
-		</div>	
-		
-		<!-- mui-screen level panel -->
-		<!-- Panel a nivel de mui-screen -->
-		<div id="menu-panel" class="mui-panel">
-			<div class="mui-panel-header">
-				<div class='mui-panel-title'>Menu</div>
-			</div>
-			<div class="mui-panel-body">
-				<div>
-					<ul id='menuoptions' class='mui-list'>
-						<li><a href="#">Option 1</a></li>
-						<li><a href="#">Option 2</a></li>
-						<li><a href="#">Option 3</a></li>
-						<li><a href="#">Option 4</a></li>
-						<li><a href="#">Option 5</a></li>
-						<li><a href="#">Option 6</a></li>
-						<li><a href="#">Option 7</a></li>
-					</ul>
-				</div>
+				<li><a href="javascript:mui.viewport.showPage('test-page','FADE');">FADE</a></li>
+									
 			</div>
 		</div>	
 						 
