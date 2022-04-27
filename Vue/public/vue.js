@@ -16,11 +16,12 @@
             
           },
     },*/
-    data: {
+    data() {
+        return {
         cartelera: null,
-        //cinemas: null,
-        //movies: null,
-    },
+        cines: null,
+        peliculas: [],
+    };},
     
     methods: {
         
@@ -31,7 +32,8 @@
                 //_this.json = data;
     
                 var info = [];
-    
+                var cines = [];
+                var peliculas = [];
                 
                 var display = 
                     data.contentCinemaShows.forEach(element => { //para cada elemento dentro de la data dentro del contentCinemaShows (contenido de cines, pelis, etc etc)
@@ -45,19 +47,22 @@
                         var trailerURL=null;
                         //var cinema=[];
                         var shows=[];
-                        
+                
+                        var cine = [];
+                
                         this.movie = element.movie;//movie.push(element.movie);
+                        
                         this.description = element.description;//description.push(element.description);
                         this.posterURL = element.posterURL;//posterURL.push(element.posterURL);
                         this.trailerURL = element.trailerURL;//trailerURL.push(element.trailerURL);
                         
-    
-    
+                        
                         element.cinemaShows.forEach(cinemas =>{
                             //cinema.push(cinemaShows.cinema);
                             //shows.push(cinemas.cinema);        //adentro de cada cine tengo shows con fecha y hora
                             var location=[]; //si location fuera null en vez de [] como hariamos???????????????????????????????
                             location.push(cinemas.cinema);
+                            cine = cinemas.cinema;
                             cinemas.shows.forEach(show => {
                                 var dateTime=[];
                                 dateTime.push(show.date);
@@ -66,32 +71,36 @@
     
     
                             })
-                            //console.log(location);
                             shows.push(location);
                             //console.log(cinemaShows.cinema);
                     
                         })
-                        contenido.push(movie);
-                        contenido.push(description);
-                        contenido.push(posterURL);
-                        contenido.push(trailerURL);
-                        contenido.push(shows);
-    
-                        //console.log(element.cinemaShows);
+                        
+                        
+                        contenido.push(this.movie);
+                        contenido.push(this.description);
+                        contenido.push(this.posterURL);
+                        contenido.push(this.trailerURL);
+                        contenido.push(this.shows);
+
+                        peliculas.push(this.movie);
+                        cines.push(cine);
+                        //console.log(peliculas);
                         info.push(element);  //agrego al vector el valor de movie??
                         $("<ul/>", {
                             html: info.join()
                         });//.appendTo("body");
+                        
+                        
+                        //console.log(this.cine);//console.log(this.cine);
                     });
         
         
         
         
                 _this.cartelera = info;
-                //_this.movies = movie;
-                //_this.cinemas = cinema;
-    
-    
+                _this.cines=cines;
+                _this.peliculas.push(this.peliculas);
     
     
     
@@ -137,10 +146,10 @@
         console.log("entro");
             
         $("<option/>", {
-            html: info.join()
+            html: cines.join()
         }).appendTo("#cinemaSelect");
 
-        //return this.cartelera;
+        //return this.cines;
       }
 
     },
@@ -236,3 +245,6 @@ setTimeout(function(){
 
 },5000)*/
 }
+
+
+

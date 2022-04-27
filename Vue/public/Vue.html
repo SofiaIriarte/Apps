@@ -24,6 +24,13 @@
     <div class="resizable" id="app">
         <img src="clapperboard.png" width="40" height="40">
         <h1 class="h1">Cartelera</h2>
+            {{cines}}
+        <select id="#cinemaSelect" v-model="cines" options="cines">
+            <option v-for="cine in cines" :value="cine"
+              v-bind:key="cine">{{cine}}
+            </option>
+
+        </select>
     </div>
     <div>
 
@@ -40,13 +47,12 @@
 
 
 
-
-        <select >
-            <option id="cinemaSelect" v-bind:placeholder="getCinemas()" required></option>
+        <!--<select>
+            <option id="cinemaSelect" v-bind="getCinemas()" required></option>
 
 
         </select>>
-        <input type="button" value="Buscar" class="btnRosa" onclick="getData()"></input>
+        <input type="button" value="Buscar" class="btnRosa" onclick="getData()"></input>-->
     </div>
     <!--<div id="app-4">
         {{cinemas}}
@@ -68,4 +74,6 @@
         
         
     </div>-->
+
+
 </body>
