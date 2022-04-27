@@ -22,7 +22,7 @@
             cines: null,
             peliculas: [],
         },*/
-        cines: null,
+        cines: [],
         peliculas: [],
         cartelera: null,
     },
@@ -92,8 +92,7 @@
                         peliculas.push(this.movie);
                         let setM = new Set(peliculas.map(JSON.stringify))
                         arrSinDuplicacionesM = Array.from(setM).map(JSON.parse);
-                        var strJSON = JSON.stringify(cine);
-                        cines.push(strJSON);
+                        cines.push(cine);
                         //console.log(peliculas);
                         info.push(element);  //agrego al vector el valor de movie??
                         $("<ul/>", {
@@ -107,6 +106,8 @@
                 
                 let set = new Set(cines.map(JSON.stringify))
                 let arrSinDuplicaciones = Array.from(set).map(JSON.parse);
+                
+                
                 //let setM = new Set(this.peliculas.map(JSON.stringify))
                 //let arrSinDuplicacionesM = Array.from(set).map(JSON.parse);
         

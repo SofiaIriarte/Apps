@@ -15,35 +15,37 @@
     <script src="vue.js"></script>
 </head>
 
-<body>
+<body >
     <!--<div id="app-3">
         <span v-if="seen">Aca Ta</span>
         <span v-else="seen">No Ta</span>
     </div>
-    <div v-show="visible">Siempre estoy</div>-->
-
-    <ul id="app" class="demo">
+    <div v-show="visible">Siempre estoy</div>
+    <ul id="app">
         <li v-for="value in cines">
           {{ value }}
         </li>
-    </ul>
+    </ul>-->
     
-    <div class="resizable">
+    
+    <div class="resizable" id="app">
         <img src="clapperboard.png" width="40" height="40">
+        
         <h1 class="h1">Cartelera</h1>
 
-        <select id="app" v-model="cines">
-            <option disabled value="">Seleccione un complejo</option>
-            <option v-for="value in cines" v-bind:value="value">
-                {{ value }}
+        <select>
+            <option disabled selected="selected" value="">Seleccione un complejo</option>
+            <option v-for="cine in cines">
+                {{ cine }}
             </option>
-
+    
         </select>
-        <span>Seleccionados: {{ selected }}</span>
+        
     </div>
+    
     <div>
 
-
+        
         <!--<script>
             $.each(items, function (i, item) {
                 $('#mySelect').append($('<option>', { 
