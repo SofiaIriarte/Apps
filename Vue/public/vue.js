@@ -25,6 +25,7 @@
         cines: [],
         peliculas: [],
         cartelera: null,
+        cineSeleccionado: null,
     },
     
     methods: {
@@ -165,8 +166,9 @@
         //return this.cines;
       },
 
-      onchange(event){
-        console(event.target);
+      onChange: function(event){
+        this.cineSeleccionado=event.target.value;
+        return event.target.value;
       }
 
     },

@@ -33,12 +33,11 @@
         
         <h1 class="h1">Cartelera</h1>
 
-        <select @change="onChange($event)">
+        <select @change="onChange">
             <option disabled selected="selected" value="">Seleccione un complejo</option>
-            <option value="cine" v-for="cine in cines">
+            <option  v-for="cine in cines" :key="cine" :value="cine" :key="cine">
                 {{ cine }}
             </option>
-    
         </select>
         
         
