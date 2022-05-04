@@ -73,14 +73,16 @@
 											{{ pelicula }}
 										</option>
 									</select>
-
+									<!--Hago click y se abren los horarios. Click de nuevo y se cierran-->
 									<select>
 										<option disabled selected="selected" value="">Seleccione un horario</option>
 										<option v-for="horario in funciones" :key="horario" :value="horario">
 											{{ horario }}
 										</option>
 									</select>
-
+									<button @click="showFunctions()" v-for="pelicula in moviesCenter" v-if="">{{ pelicula }}</button>
+									<div id="result"></div>
+									
 								</div>
 									
 							</div>

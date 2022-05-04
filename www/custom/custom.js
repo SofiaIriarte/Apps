@@ -364,19 +364,23 @@ window.onload=function(){
                         this.posterURL = element.posterURL;
                         this.trailerURL = element.trailerURL;
                         
-                        
-                        element.cinemaShows.forEach(cinemas =>{
-                            
+						element.cinemaShows.forEach(cinemas =>{
                             var location=[]; 
                             location.push(cinemas.cinema);
                             cine = cinemas.cinema;
                             cinemas.shows.forEach(show => {
-                                var dateTime=[];
+								var funciones = [];
+								funciones.push(element.movie);
+								funciones.push(cinemas.cinema);
+								funciones.push(show.timeToDisplay);
+								var dateTime=[];
                                 dateTime.push(show.date);
                                 dateTime.push(show.timeToDisplay);
                                 location.push(dateTime); 
-    
-    
+								var movie = this.movie;
+								var func = show.timeToDisplay;
+								
+								_this.funciones.push(funciones);
                             })
                             shows.push(location);
 							var currentMovie=this.movie;
@@ -396,7 +400,8 @@ window.onload=function(){
                         
                         peliculas.push(this.movie);
                       
-
+						
+						console.log(_this.funciones);
 						cines.push(cine);
                         
                         info.push(element);  
@@ -416,9 +421,9 @@ window.onload=function(){
 					pC=peliculasComplejos;
 					
 					_this.peliculas=arrSinDuplicacionesM;
-					
+					_this.moviesCenter = _this.peliculas;
 					cartelera = info;
-
+					
             });
 
       },
@@ -482,6 +487,19 @@ window.onload=function(){
 			
 			
 		},   
+		showFunctions: function(event){
+			this.funciones.forEach(function(event){
+				
+				event.forEach(el=>{
+					console.log(el(0));
+					if (el(0)==el.target.value){
+						document.getElementById('result').innerHTML+='<br>' + element;
+					}
+				})
+				
+			  })
+
+		},
 	   },
 	   created() {
 		   this.function();
