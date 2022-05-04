@@ -56,30 +56,32 @@
 					</div>
 					<div class="mui-page-body mui-scrollable" id="home-body">
 						<div> <!-- important for scroll! -->
-							<div class="subtitle-band">Welcome to MobileUI</div>
+							<div class="subtitle-band" >Welcome to MobileUI</div>
 							
-								<select @change="onChange" id="app">
-									<option disabled selected="selected" value="">Seleccione un complejo</option>
-									<option  v-for="cine in cines" :key="cine" :value="cine" :key="cine">
-										{{ cine }}
-									</option>
-								</select>
+								<div  id="app">
+
+									<select @change="onChange">
+										<option disabled selected="selected"  value="">Seleccione un complejo</option>
+										<option  v-for="cine in cines" :key="cine" :value="cine">
+											{{ cine }}
+										</option>
+									</select>
 								
-								<select @change="onChange" id="app">
-									<option disabled selected="selected" value="">Seleccione una pelicula</option>
-									<option  v-for="movie in cines" :key="movie" :value="movie" :key="movie">
-										{{ movie }}
-									</option>
-								</select>
+									<select @change="onChangeMovie">
+										<option disabled selected="selected" value="">Seleccione una pelicula</option>
+										<option v-for="pelicula in moviesCenter" :key="pelicula" :value="pelicula"> <!--ME SELECCIONA LA PELICULA QUE ESTA EN LA MISMA POSICION Y NO LA PRIMERA-->
+											{{ pelicula }}
+										</option>
+									</select>
 
+									<select>
+										<option disabled selected="selected" value="">Seleccione un horario</option>
+										<option v-for="horario in funciones" :key="horario" :value="horario">
+											{{ horario }}
+										</option>
+									</select>
 
-
-								<ul id='demos' class='mui-list mui-list-disclosure'>
-									<li><a href="#" id='gocontent'>Complejos</a></li>
-									<li><a href="#" id='golist'>Peliculas</a></li>
-									<li><a href="#" id='gotrans'>Busqueda</a></li>
-									<li><a href="#" id='gomodal'>Precios</a></li>
-								</ul>
+								</div>
 									
 							</div>
 						</div>

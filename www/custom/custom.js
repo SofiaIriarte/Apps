@@ -321,22 +321,30 @@ window.onload=function(){
 	let vm=new Vue({
 	  
 	   el:'#app',
-	  
-	   data: {
-		   cines: [],
-		   peliculas: [],
-		   cartelera: null,
-	   },
+
+		data: {
+			cines: [],
+			peliculas: [],
+			cartelera: null,
+			pC: null,
+			cineSeleccionado: null,
+			moviesCenter: [],
+			funciones: [],
+			dias: null,
+			hora: null,
+			movie: null,
+		},
 	   
 	   methods: {
 		function () {
             var _this = this;
+			var info = [];
+			var cines = [];
+			var peliculasComplejos = [];
+			var peliculas = [];
+			var arrSinDuplicacionesM=[];
             $.getJSON('https://api.movie.com.uy/api/shows/rss/data', function (data) {
-				var info = [];
-                var cines = [];
-                var peliculasComplejos = [];
-                var peliculas = [];
-                var arrSinDuplicacionesM=[];
+				
                 
                 var display = 
                     data.contentCinemaShows.forEach(element => { 
@@ -371,10 +379,14 @@ window.onload=function(){
     
                             })
                             shows.push(location);
-                    
+							var currentMovie=this.movie;
+			
+							peliculasComplejos.push({cine,currentMovie});
+
+							 	 	
                         })
                         
-                        
+                        	
                         contenido.push(this.movie);
                         contenido.push(this.description);
                         contenido.push(this.posterURL);
@@ -383,10 +395,7 @@ window.onload=function(){
 
                         
                         peliculas.push(this.movie);
-                        let setM = new Set(peliculas.map(JSON.stringify))
-                        arrSinDuplicacionesM = Array.from(setM).map(JSON.parse);
-						var currentMovie=this.movie;
-						peliculasComplejos.push({cine,currentMovie});
+                      
 
 						cines.push(cine);
                         
@@ -396,25 +405,20 @@ window.onload=function(){
                         });
                     });
         
-                
-                let set = new Set(cines.map(JSON.stringify))
-                let arrSinDuplicaciones = Array.from(set).map(JSON.parse);
-                
-				
-                        
-				let setC = new Set(this.peliculasComplejos.map(JSON.stringify))
-				arrSinDuplicacionesC = Array.from(setC).map(JSON.parse);
-				
-				console.log(arrSinDuplicacionesC);
+					let set = new Set(cines.map(JSON.stringify))
+					let arrSinDuplicaciones = Array.from(set).map(JSON.parse);
 
-        
-                _this.cartelera = info;
-                _this.cines=arrSinDuplicaciones;
-				_this.peliculas.push(this.arrSinDuplicacionesM);
-				console.log(_this.peliculas);
-                
-    
-  
+					_this.cines=arrSinDuplicaciones;
+
+					let setM = new Set(peliculas.map(JSON.stringify))
+					arrSinDuplicacionesM = Array.from(setM).map(JSON.parse);
+					
+					pC=peliculasComplejos;
+					
+					_this.peliculas=arrSinDuplicacionesM;
+					
+					cartelera = info;
+
             });
 
       },
@@ -430,9 +434,54 @@ window.onload=function(){
 		 },
 		 onChange: function(event){
 			this.cineSeleccionado=event.target.value;
+			this.moviesCenter=[];
+			
+
+			cartelera.forEach(data => {
+				
+				data.cinemaShows.forEach(element => {
+					if (element.cinema == this.cineSeleccionado) {
+						this.moviesCenter.push(data.movie);
+						
+						
+					  }
+		
+				})
+				
+				
+			})
+			
+
 			return event.target.value;
-		  }
-   
+		},
+		onChangeMovie: function(event){
+			this.movie=event.target.value;
+			this.funciones=[];	
+			cartelera.forEach(data => {
+				data.cinemaShows.forEach(element =>{
+					if (data.movie==this.movie && element.cinema == this.cineSeleccionado){
+						element.shows.forEach(show =>{
+							//this.dias=null;
+							//this.hora=null;
+							this.funciones.push(show.timeToDisplay);
+							//let dias = Date.parse(show.date);
+							//let dia = toLocaleDateString(dias);
+							//console.log(dia);
+							//let hora = dias.getHour();
+							/*if (show.length != 0){
+								this.funciones.push(show.timeToDisplay);
+							}*/
+						})
+					}
+
+				})
+				
+
+			})
+			
+			
+			
+		},   
 	   },
 	   created() {
 		   this.function();
