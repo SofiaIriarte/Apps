@@ -369,7 +369,7 @@ window.onload=function(){
                             location.push(cinemas.cinema);
                             cine = cinemas.cinema;
                             cinemas.shows.forEach(show => {
-								var funciones = [];
+								/*var funciones = [];
 								funciones.push(element.movie);
 								funciones.push(cinemas.cinema);
 								funciones.push(show.timeToDisplay);
@@ -380,7 +380,7 @@ window.onload=function(){
 								var movie = this.movie;
 								var func = show.timeToDisplay;
 								
-								_this.funciones.push(funciones);
+								_this.funciones.push(funciones);*/
                             })
                             shows.push(location);
 							var currentMovie=this.movie;
@@ -401,7 +401,6 @@ window.onload=function(){
                         peliculas.push(this.movie);
                       
 						
-						console.log(_this.funciones);
 						cines.push(cine);
                         
                         info.push(element);  
@@ -421,8 +420,9 @@ window.onload=function(){
 					pC=peliculasComplejos;
 					
 					_this.peliculas=arrSinDuplicacionesM;
-					_this.moviesCenter = _this.peliculas;
+					//_this.moviesCenter = _this.peliculas;
 					cartelera = info;
+					//console.log(cartelera);
 					
             });
 
@@ -430,7 +430,7 @@ window.onload=function(){
    
 		   
 		 getCinemas(){
-		   console.log("entro");
+		   //console.log("entro");
 			   
 		   $("<ul/>", {
 			   html: cines.join()
@@ -440,7 +440,7 @@ window.onload=function(){
 		 onChange: function(event){
 			this.cineSeleccionado=event.target.value;
 			this.moviesCenter=[];
-			
+			//this.funciones=[];
 
 			cartelera.forEach(data => {
 				
@@ -488,14 +488,16 @@ window.onload=function(){
 			
 		},   
 		showFunctions: function(event){
-			this.funciones.forEach(function(event){
+			cartelera.forEach(pelicula => {
+				//document.getElementById("showImage").onclick = function() {
+					//document.getElementById("theImage").style.visibility = "visible";
+				//}
 				
-				event.forEach(el=>{
-					console.log(el(0));
-					if (el(0)==el.target.value){
-						document.getElementById('result').innerHTML+='<br>' + element;
-					}
-				})
+				
+				//image1=new Image(pelicula.posterURL,"dsfdsfdsfds","thumb/img3");
+				//document.show('result').innerHTML+=image1;
+//				document.write("img src="+pelicula.posterURL+">");
+				//document.getElementById('result').innerHTML+='<br>' + pelicula.posterURL;
 				
 			  })
 
