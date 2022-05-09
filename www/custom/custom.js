@@ -333,6 +333,7 @@ window.onload=function(){
 			dias: null,
 			hora: null,
 			movie: null,
+			myImage:null,
 		},
 	   
 	   methods: {
@@ -488,7 +489,9 @@ window.onload=function(){
 			
 		},   
 		showFunctions: function(event){
+			 
 			cartelera.forEach(pelicula => {
+				this.myImage.push(pelicula.posterURL);
 				//document.getElementById("showImage").onclick = function() {
 					//document.getElementById("theImage").style.visibility = "visible";
 				//}
