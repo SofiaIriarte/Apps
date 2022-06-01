@@ -284,11 +284,11 @@ function installEvents() {
 	});
 	
 	//Pure javascript
-	var menuOptions = document.getElementById('menuoptions')
+	/*var menuOptions = document.getElementById('menuoptions')
 	menuOptions.addEventListener('click', function() {
 		mui.alert('Sorry. Nothing to do!', "Attention");
 		return false;
-	}, false);
+	}, false);*/
 	
 }
 
@@ -321,100 +321,190 @@ window.onload=function(){
 	let vm=new Vue({
 	  
 	   el:'#app',
-	  
-	   data: {
-		   cines: [],
-		   peliculas: [],
-		   cartelera: null,
-	   },
+
+		data: {
+			cines: [],
+			peliculas: [],
+			cartelera: null,
+			pC: null,
+			cineSeleccionado: null,
+			moviesCenter: [],
+			funciones: [],
+			dias: null,
+			hora: null,
+			movie: null,
+			myImage:null,
+		},
 	   
 	   methods: {
-		   
+		function () {
+            var _this = this;
+			var info = [];
+			var cines = [];
+			var peliculasComplejos = [];
+			var peliculas = [];
+			var arrSinDuplicacionesM=[];
+            $.getJSON('https://api.movie.com.uy/api/shows/rss/data', function (data) {
+				
+                
+                var display = 
+                    data.contentCinemaShows.forEach(element => { 
+                        
+                        var contenido=[];
+                        var movie=null;
+                        var description=null;
+                        var posterURL=null;
+                        var trailerURL=null;
+                        var shows=[];
+                
+                        var cine = [];
+                
+                        this.movie = element.movie;
+                        
+                        this.description = element.description;
+                        this.posterURL = element.posterURL;
+                        this.trailerURL = element.trailerURL;
+                        
+						element.cinemaShows.forEach(cinemas =>{
+                            var location=[]; 
+                            location.push(cinemas.cinema);
+                            cine = cinemas.cinema;
+                            cinemas.shows.forEach(show => {
+								/*var funciones = [];
+								funciones.push(element.movie);
+								funciones.push(cinemas.cinema);
+								funciones.push(show.timeToDisplay);
+								var dateTime=[];
+                                dateTime.push(show.date);
+                                dateTime.push(show.timeToDisplay);
+                                location.push(dateTime); 
+								var movie = this.movie;
+								var func = show.timeToDisplay;
+								
+								_this.funciones.push(funciones);*/
+                            })
+                            shows.push(location);
+							var currentMovie=this.movie;
+			
+							peliculasComplejos.push({cine,currentMovie});
+
+							 	 	
+                        })
+                        
+                        	
+                        contenido.push(this.movie);
+                        contenido.push(this.description);
+                        contenido.push(this.posterURL);
+                        contenido.push(this.trailerURL);
+                        contenido.push(this.shows);
+
+                        
+                        peliculas.push(this.movie);
+                      
+						
+						cines.push(cine);
+                        
+                        info.push(element);  
+                        $("<ul/>", {
+                            html: info.join()
+                        });
+                    });
+        
+					let set = new Set(cines.map(JSON.stringify))
+					let arrSinDuplicaciones = Array.from(set).map(JSON.parse);
+
+					_this.cines=arrSinDuplicaciones;
+
+					let setM = new Set(peliculas.map(JSON.stringify))
+					arrSinDuplicacionesM = Array.from(setM).map(JSON.parse);
+					
+					pC=peliculasComplejos;
+					
+					_this.peliculas=arrSinDuplicacionesM;
+					//_this.moviesCenter = _this.peliculas;
+					cartelera = info;
+					//console.log(cartelera);
+					
+            });
+
+      },
    
-		   function () {
-			   var _this = this;
-			   $.getJSON('https://api.movie.com.uy/api/shows/rss/data', function (data) {
-				   var info = [];
-				   var cines = [];
-				   var peliculas = [];
-				   var arrSinDuplicacionesM=[];
-				   
-				   var display = 
-					   data.contentCinemaShows.forEach(element => { 
-						   
-						   var contenido=[];
-						   var movie=null;
-						   var description=null;
-						   var posterURL=null;
-						   var trailerURL=null;
-						   var shows=[];
-				   
-						   var cine = [];
-				   
-						   this.movie = element.movie;
-						   
-						   this.description = element.description;
-						   this.posterURL = element.posterURL;
-						   this.trailerURL = element.trailerURL;
-						   
-						   
-						   element.cinemaShows.forEach(cinemas =>{
-							   var location=[]; 
-							   location.push(cinemas.cinema);
-							   cine = cinemas.cinema;
-							   cinemas.shows.forEach(show => {
-								   var dateTime=[];
-								   dateTime.push(show.date);
-								   dateTime.push(show.timeToDisplay);
-								   location.push(dateTime);
-	   
-	   
-							   })
-							   shows.push(location);
-							   
-					   
-						   })
-						   
-						   
-						   contenido.push(this.movie);
-						   contenido.push(this.description);
-						   contenido.push(this.posterURL);
-						   contenido.push(this.trailerURL);
-						   contenido.push(this.shows);
-   
-						   
-						   peliculas.push(this.movie);
-						   let setM = new Set(peliculas.map(JSON.stringify))
-						   arrSinDuplicacionesM = Array.from(setM).map(JSON.parse);
-						   cines.push(cine);
-						   
-						   info.push(element); 
-						   $("<ul/>", {
-							   html: info.join()
-						   });
-					   });
 		   
-				   
-				   let set = new Set(cines.map(JSON.stringify))
-				   let arrSinDuplicaciones = Array.from(set).map(JSON.parse);
-		   
-				   _this.cartelera = info;
-				   _this.cines=arrSinDuplicaciones;
-				   _this.peliculas.push(this.arrSinDuplicacionesM);
-	   
-			   });
-   
-		 },
-		 
 		 getCinemas(){
-		   console.log("entro");
+		   //console.log("entro");
 			   
 		   $("<ul/>", {
 			   html: cines.join()
 		   });
    
-		 }
-   
+		 },
+		 onChange: function(event){
+			this.cineSeleccionado=event.target.value;
+			this.moviesCenter=[];
+			//this.funciones=[];
+
+			cartelera.forEach(data => {
+				
+				data.cinemaShows.forEach(element => {
+					if (element.cinema == this.cineSeleccionado) {
+						this.moviesCenter.push(data.movie);
+						
+						
+					  }
+		
+				})
+				
+				
+			})
+			
+
+			return event.target.value;
+		},
+		onChangeMovie: function(event){
+			this.movie=event.target.value;
+			this.funciones=[];	
+			cartelera.forEach(data => {
+				data.cinemaShows.forEach(element =>{
+					if (data.movie==this.movie && element.cinema == this.cineSeleccionado){
+						element.shows.forEach(show =>{
+							//this.dias=null;
+							//this.hora=null;
+							this.funciones.push(show.timeToDisplay);
+							//let dias = Date.parse(show.date);
+							//let dia = toLocaleDateString(dias);
+							//console.log(dia);
+							//let hora = dias.getHour();
+							/*if (show.length != 0){
+								this.funciones.push(show.timeToDisplay);
+							}*/
+						})
+					}
+
+				})
+				
+
+			})
+			
+			
+			
+		},   
+		showFunctions: function(event){
+			 
+			cartelera.forEach(pelicula => {
+				this.myImage.push(pelicula.posterURL);
+				//document.getElementById("showImage").onclick = function() {
+					//document.getElementById("theImage").style.visibility = "visible";
+				//}
+				
+				
+				//image1=new Image(pelicula.posterURL,"dsfdsfdsfds","thumb/img3");
+				//document.show('result').innerHTML+=image1;
+//				document.write("img src="+pelicula.posterURL+">");
+				//document.getElementById('result').innerHTML+='<br>' + pelicula.posterURL;
+				
+			  })
+
+		},
 	   },
 	   created() {
 		   this.function();
