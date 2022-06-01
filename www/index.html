@@ -24,7 +24,6 @@
     <script src="custom/custom.js" type="text/javascript"></script>
 
 
-
 	<!--NOSOTROS-->
 	<link href="favicon.jpg" rel="shortcut icon"> 
 	<link href="styles.css" rel="stylesheet">
@@ -41,7 +40,9 @@
 <body>
 	<!-- Main wrapper. Importantly, think carefully before you change it or remove it. Do not recommend it. -->
 	<!-- Main wrapper. Importante, Piénselo bien antes de cambiarlo o quitarlo. No se lo recomiendo. -->
-    <div id="mui-screen" class="mui-viewport">
+   
+<!-- ACA HAY QUE PONER EL DIV QUE DIJO EL PROFE EN CLASE -->
+	<div id="mui-screen" class="mui-viewport">
     
 		<div id="mui-screen-page" class="mui-page">
 			<!-- Ddefault viewport. Do not remove. It will make your life simpler and happy. -->
@@ -49,21 +50,25 @@
 	
 			<div id="mui-viewport" class="mui-viewport">
 				
-				<div id='home-page' class="mui-page">
-					<div class="mui-page-header">
-						<div class="mui-page-logo"></div>
+				<div id='home-page' class="mui-page"> 
+					
+					<div class="mui-page-header">  <!-- Encabezado de la pagina -->
+						<div class="mui-page-logo"> </div>
 						<a class="mui-headmenu" href="#"></a>
 					</div>
+
+
 					<div class="mui-page-body mui-scrollable" id="home-body">
 						<div> <!-- important for scroll! -->
-							<div class="subtitle-band">Welcome to MobileUI</div>
+							<div class="subtitle-band">Cartelera</div>
 								
-								<ul id='demos' class='mui-list mui-list-disclosure'>
-									<li><a href="#" id='gocontent'>Complejos</a></li>
-									<li><a href="#" id='golist'>Peliculas</a></li>
-									<li><a href="#" id='gotrans'>Busqueda</a></li>
-									<li><a href="#" id='gomodal'>Precios</a></li>
-								</ul>
+								<select @change="onChange($event)">
+									<option disabled selected="selected" value="">Seleccione un complejo</option>
+									<option value="cine" v-for="cine in cines">
+										{{ cine }}
+									</option>
+							
+								</select>
 									
 							</div>
 						</div>
@@ -71,12 +76,14 @@
 				</div>
 
 
-				<div id='content-page' class="mui-page">
+				<div id='second-page' class="mui-page">
+					
 					<div class="mui-page-header">
 						<a class="mui-backarrow" href="#"></a>
-						<div class='mui-page-title'>Content Sample</div>
+						<div class='mui-page-title'> </div>
 						<a class="mui-headmenu" href="#"></a>
 					</div>
+
 					<div class="mui-page-body mui-scrollable" id="second-body">
 						<div class='mui-page-body-content'>
 							
